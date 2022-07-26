@@ -40,7 +40,7 @@ export class Viewer {
     parent: HTMLElement,
     width: number,
     height: number,
-    font: THREE.Font
+    font?: THREE.Font
   ) {
     // create DXF painter
     this.painter = new DXFPainter(font);
