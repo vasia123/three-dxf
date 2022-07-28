@@ -81,8 +81,8 @@ export function isSPLINE(entity: IEntity): entity is ISplineEntity {
 }
 
 export class DXFPainter {
-  font: THREE.Font;
-  constructor(font: THREE.Font) {
+  font?: THREE.Font;
+  constructor(font?: THREE.Font) {
     this.font = font;
   }
   draw(entity: IEntity, data: IDxf) {

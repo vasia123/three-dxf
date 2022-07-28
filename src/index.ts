@@ -143,20 +143,20 @@ export class Viewer {
     animate();
   }
 
-  // Unused function
-  // public findExtents(scene: THREE.Scene) {
-  //   for (let child of scene.children) {
-  //     let minX, maxX, minY, maxY;
-  //     if (child.position) {
-  //       minX = Math.min(child.position.x, minX);
-  //       minY = Math.min(child.position.y, minY);
-  //       maxX = Math.max(child.position.x, maxX);
-  //       maxY = Math.max(child.position.y, maxY);
-  //     }
-  //   }
-
-  //   return { min: { x: minX, y: minY }, max: { x: maxX, y: maxY } };
-  // }
+  // Useful function
+  public findExtents(scene: THREE.Scene) {
+    let minX, maxX, minY, maxY;
+    for (const child of scene.children) {
+      if (child.position) {
+        minX = minX ? Math.min(child.position.x, minX) : minX;
+        minY = minY ? Math.min(child.position.y, minY) : minY;
+        maxX = maxX ? Math.max(child.position.x, maxX) : maxX;
+        maxY = maxY ? Math.max(child.position.y, maxY) : maxY;
+      }
+    }
+    return { min: { x: minX, y: minY }, max: { x: maxX, y: maxY } };
+  }
+  
   // Show/Hide helpers from https://plainjs.com/javascript/effects/hide-or-show-an-element-42/
   // get the default display style of an element
   private defaultDisplay(tag: string) {
